@@ -1,0 +1,23 @@
+{
+  "name": "Remark Later",
+  "version": "0.1",
+  "description": "Send documents to your Remarkable tablet",
+  "manifest_version": 2,
+  "permissions": [
+    "storage",
+    "activeTab",
+    "https://document-storage-production-dot-remarkable-production.appspot.com/",
+    "https://storage.googleapis.com/"
+  ],
+  "background": {
+    "scripts": [
+      "vendor/jszip.min.js",
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "data/remarkable.json"
+  ],
+  "browser_action": {}
+}
