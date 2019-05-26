@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Setup Remarklater</title>
+  <script type="text/javascript" src="/vendor/chrome-extension-async.js"></script>
+  <script type="text/javascript" src="/vendor/jszip.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/setup.js"></script>
+  <script type="text/javascript" src="/utils.js"></script>
+  <script type="text/javascript" src="/remarkable.js"></script>
+</head>
+<body>
+  <h1>Remarklater</h1>
+
+  <p>
+    You're almost there! We need to register Remarklater with your Remarkable
+    account before you can start sending files to it. Head to your
+    <a href="https://my.remarkable.com/generator-device" target="_blank">Remarkable account page</a>
+    to generate a one-time code, then paste it below.
+  </p>
+
+  <div id="error" style="display: none;"></div>
+  <div id="success" style="display: none;">
+    Great! Now try to print this page. Select the Remarkable printer. You
+    should see it show up on your device right away. If you don't, make sure
+    your Remarkable tablet is on Wi-Fi.
+  </div>
+
+  <form id="setupForm" method='post'>
+    <label for="code">One-time code</label>
+    <input id="code" type="text" placeholder="8-character code (e.g. remarkbl)" />
+    <button type="submit">Log in to Remarkable</button>
+  </form>
+</body>
+</html>

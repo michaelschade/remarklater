@@ -39,7 +39,7 @@ Remarkable.registerDevice = async function(code) {
   chrome.storage.local.set({
     'deviceToken': token
   })
-  Auth.deviceToken = deviceToken;
+  Auth.deviceToken = token;
 }
 
 // Refresh the Bearer token before using.

@@ -6,6 +6,7 @@
   "permissions": [
     "storage",
     "printerProvider",
+    "tabs",
     "https://document-storage-production-dot-remarkable-production.appspot.com/",
     "https://my.remarkable.com/",
     "https://storage.googleapis.com/"
@@ -19,5 +20,10 @@
       "background.js"
     ],
     "persistent": false
-  }
+  },
+  "web_accessible_resources": [
+    "vendor/jquery.min.js",
+    "vendor/jquery.min.js",
+    "static/setup.js"
+  ]
 }

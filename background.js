@@ -1,6 +1,17 @@
 (async function() {
 const printerId = 'remarklater';
 
+/* Extension startup */
+function initRemarkable() {
+  if (!Remarkable.isDeviceRegistered()) {
+      chrome.tabs.create({url:"static/setup.html"});
+  }
+}
+chrome.runtime.onInstalled.addListener(initRemarkable);
+chrome.runtime.onStartup.addListener(initRemarkable);
+
+/* Setup custom printers */
+
 chrome.printerProvider.onGetPrintersRequested.addListener((callback) => {
   callback([
     {
@@ -22,6 +33,8 @@ chrome.printerProvider.onGetCapabilityRequested.addListener((pid, callback) => {
   });
 });
 
+// TODO: can't use callback to indicate status because we're using an async
+// function. is there a better way to thread error states through?
 chrome.printerProvider.onPrintRequested.addListener(async (printJob, callback) => {
   try {
     let uploadReq = await Remarkable.uploadRequest();
