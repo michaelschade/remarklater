@@ -12,6 +12,7 @@
   "background": {
     "scripts": [
       "vendor/jszip.min.js",
+      "utils.js",
       "background.js"
     ],
     "persistent": false
