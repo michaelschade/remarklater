@@ -13,15 +13,18 @@ const Config = {
     refreshToken: `${baseAuthUrl}/user/new`,
   }
 };
-const Auth = await chrome.storage.local.get(['deviceToken'])
 
-Remarkable.isDeviceRegistered = function() {
-  return !!Auth.deviceToken;
+async function deviceToken() {
+  return (await chrome.storage.local.get('deviceToken')).deviceToken;
+}
+
+Remarkable.isDeviceRegistered = async function() {
+  return !!(await deviceToken())
 }
 
 // Register device using code at https://my.remarkable.com/generator-device
 Remarkable.registerDevice = async function(code) {
-  if (Remarkable.isDeviceRegistered()) {
+  if (await Remarkable.isDeviceRegistered()) {
     throw new Error("Device already registered")
   }
   let request = await fetch(Config.urls.newDevice, {
@@ -39,19 +42,18 @@ Remarkable.registerDevice = async function(code) {
   chrome.storage.local.set({
     'deviceToken': token
   })
-  Auth.deviceToken = token;
 }
 
 // Refresh the Bearer token before using.
 // Should probably cache this, but let's just refresh it every use for now
 async function bearerToken() {
-  if (!Remarkable.isDeviceRegistered()) {
+  if (!(await Remarkable.isDeviceRegistered())) {
     throw new Error("Must register device first. Call `Remarkable.registerDevice` with a one-time code from https://my.remarkable.com/generator-device to get started.");
   }
   let request = await fetch(Config.urls.refreshToken, {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${Auth.deviceToken}`,
+      'Authorization': `Bearer ${await deviceToken()}`,
     }
   });
   if (!request.ok) {

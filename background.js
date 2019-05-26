@@ -2,8 +2,8 @@
 const printerId = 'remarklater';
 
 /* Extension startup */
-function initRemarkable() {
-  if (!Remarkable.isDeviceRegistered()) {
+async function initRemarkable() {
+  if (!(await Remarkable.isDeviceRegistered())) {
       chrome.tabs.create({url:"static/setup.html"});
   }
 }
