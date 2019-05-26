@@ -7,18 +7,17 @@
     "storage",
     "printerProvider",
     "https://document-storage-production-dot-remarkable-production.appspot.com/",
+    "https://my.remarkable.com/",
     "https://storage.googleapis.com/"
   ],
   "background": {
     "scripts": [
+      "vendor/chrome-extension-async.js",
       "vendor/jszip.min.js",
       "utils.js",
       "remarkable.js",
       "background.js"
     ],
     "persistent": false
-  },
-  "web_accessible_resources": [
-    "data/remarkable.json"
-  ]
+  }
 }
