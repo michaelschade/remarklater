@@ -4,22 +4,41 @@ const remarkableUrls = {
   uploadRequest: '/document-storage/json/2/upload/request',
   uploadStatus: '/document-storage/json/2/upload/update-status'
 }
+const printerId = 'remarklater';
 const remarkableConfig = await (await fetch(chrome.runtime.getURL('data/remarkable.json'))).json();
 
-// On extension click, embed code into page 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  async function getDOM() {
-    let data = await html2pdf().from(document.body).output('datauristring');
-    chrome.runtime.sendMessage({
-      id: 'exportPdf',
-      name: document.title,
-      data: data
-    });
-  }
+chrome.printerProvider.onGetPrintersRequested.addListener((callback) => {
+  callback([
+    {
+      id: printerId,
+      name: 'Remarklater'
+    },
+  ]);
+});
 
-  chrome.tabs.executeScript({file: 'vendor/html2pdf.bundle.min.js'}, () => {
-		chrome.tabs.executeScript({code: '(' + getDOM + ')();'});
+chrome.printerProvider.onGetCapabilityRequested.addListener((pid, callback) => {
+  if (pid != printerId) {
+    return;
+  }
+  callback({
+    version: '1',
+    printer: {
+      supported_content_type: [{"content_type": "application/pdf"}],
+    }
   });
+});
+
+chrome.printerProvider.onPrintRequested.addListener(async (printJob, callback) => {
+  try {
+    let uploadReq = await uploadRequest();
+    let zipBlob = await packageZip(uploadReq.ID, printJob.document)
+    let docUploadReq = await uploadDocument(uploadReq.BlobURLPut, zipBlob);
+    let uploadStatusReq = await updateDocument(uploadReq.ID, printJob.title);
+    callback('OK');
+  } catch (err) {
+    console.error(`Encountered error printing`, printJob, err);
+    callback('FAILED');
+  }
 });
 
 // Make a request to upload a new document
@@ -85,13 +104,4 @@ async function updateDocument(id, name, parent='') {
   let payload = await request.json();
   return payload[0];
 }
-
-chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-  if (request.id == 'exportPdf') {
-    let uploadReq = await uploadRequest();
-    let zipBlob = await packageZip(uploadReq.ID, dataURItoBlob(request.data))
-    let docUploadReq = await uploadDocument(uploadReq.BlobURLPut, zipBlob);
-    let uploadStatusReq = await updateDocument(uploadReq.ID, request.name);
-  }
-});
 })()

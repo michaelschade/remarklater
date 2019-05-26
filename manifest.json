@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "permissions": [
     "storage",
-    "activeTab",
+    "printerProvider",
     "https://document-storage-production-dot-remarkable-production.appspot.com/",
     "https://storage.googleapis.com/"
   ],
@@ -19,6 +19,5 @@
   },
   "web_accessible_resources": [
     "data/remarkable.json"
-  ],
-  "browser_action": {}
+  ]
 }
