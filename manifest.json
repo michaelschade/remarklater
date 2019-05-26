@@ -13,6 +13,7 @@
     "scripts": [
       "vendor/jszip.min.js",
       "utils.js",
+      "remarkable.js",
       "background.js"
     ],
     "persistent": false
