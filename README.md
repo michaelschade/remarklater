@@ -11,3 +11,10 @@ You should be prompted to generate an auth code from your Remarkable account.
 Once you've done that, try printing a page! If you don't immediately see the
 Remarklater printed listed in the Print dialog, click the dropdown under
 _Destination_ and click _See more…_
+
+# Credit
+
+* https://github.com/splitbrain/ReMarkableAPI/wiki/Authentication
+* https://github.com/juruen/rmapi
+
+More resources on the [awesome-reMarkable wiki](https://github.com/reHackable/awesome-reMarkable)

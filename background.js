@@ -16,7 +16,8 @@ chrome.printerProvider.onGetPrintersRequested.addListener((callback) => {
   callback([
     {
       id: printerId,
-      name: 'Remarklater'
+      name: 'Send to reMarkable',
+      description: 'Save the current page as a PDF and upload to your reMarkable tablet.'
     },
   ]);
 });

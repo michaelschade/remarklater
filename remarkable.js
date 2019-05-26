@@ -116,7 +116,20 @@ Remarkable.packageAsZip = async function(id, pdf) {
   var zip = new JSZip();
   zip.file(`${id}.content`, `
     {
-        "extraMetadata": {},
+        "extraMetadata": {
+          "LastBrushColor": "Black",
+          "LastBrushThicknessScale": "2",
+          "LastColor": "Black",
+          "LastEraserThicknessScale": "2",
+          "LastPen": "Ballpoint",
+          "LastPenColor": "Black",
+          "LastPenThicknessScale": "2",
+          "LastPencil": "SharpPencil",
+          "LastPencilColor": "Black",
+          "LastPencilThicknessScale": "2",
+          "LastTool": "Ballpoint",
+          "ThicknessScale": "2"
+        },
         "fileType": "pdf",
         "lastOpenedPage": 0,
         "lineHeight": -1,
