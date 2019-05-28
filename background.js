@@ -34,18 +34,18 @@ chrome.printerProvider.onGetCapabilityRequested.addListener((pid, callback) => {
   });
 });
 
-// TODO: can't use callback to indicate status because we're using an async
-// function. is there a better way to thread error states through?
 chrome.printerProvider.onPrintRequested.addListener(async (printJob, callback) => {
+  // Default mark the print as successful since the print dialog doesn't give
+  // enough time to report a failure anyway, and will sometimes timeout even
+  // when it succeeded.
+  callback('OK');
   try {
     let uploadReq = await Remarkable.uploadRequest();
     let zipBlob = await Remarkable.packageAsZip(uploadReq.ID, printJob.document)
     let docUploadReq = await Remarkable.uploadDocument(uploadReq.BlobURLPut, zipBlob);
     let uploadStatusReq = await Remarkable.updateDocument(uploadReq.ID, printJob.title);
-    callback('OK');
   } catch (err) {
     console.error(`Encountered error printing`, printJob, err);
-    callback('FAILED');
   }
 });
 })()
