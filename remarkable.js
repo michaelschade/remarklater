@@ -133,6 +133,7 @@ Remarkable.packageAsZip = async function(id, pdf) {
           "ThicknessScale": "2"
         },
         "fileType": "pdf",
+        "pageCount": "0",
         "lastOpenedPage": 0,
         "lineHeight": -1,
         "margins": 180,
