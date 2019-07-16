@@ -38,6 +38,11 @@ chrome.printerProvider.onPrintRequested.addListener(async (printJob, callback) =
   // Default mark the print as successful since the print dialog doesn't give
   // enough time to report a failure anyway, and will sometimes timeout even
   // when it succeeded.
+  if (!(await Remarkable.isDeviceRegistered())) {
+    callback('FAILED');
+    chrome.tabs.create({url:"static/setup.html?print=failed"});
+    return;
+  }
   callback('OK');
   try {
     let uploadReq = await Remarkable.uploadRequest();

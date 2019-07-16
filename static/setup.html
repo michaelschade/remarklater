@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Setup Remarklater</title>
+  <link rel="stylesheet" type="text/css" href="/static/setup.css" />
   <script type="text/javascript" src="/vendor/chrome-extension-async.js"></script>
   <script type="text/javascript" src="/vendor/jszip.min.js"></script>
   <script type="text/javascript" src="/vendor/jquery.min.js"></script>
@@ -9,26 +10,68 @@
   <script type="text/javascript" src="/remarkable.js"></script>
 </head>
 <body>
-  <h1>Remarklater</h1>
-
-  <p>
-    You're almost there! We need to register Remarklater with your Remarkable
-    account before you can start sending files to it. Head to your
-    <a href="https://my.remarkable.com/generator-device" target="_blank">Remarkable account page</a>
-    to generate a one-time code, then paste it below.
-  </p>
-
-  <div id="error" style="display: none;"></div>
-  <div id="success" style="display: none;">
-    Great! Now try to print this page. Select the Remarkable printer. You
-    should see it show up on your device right away. If you don't, make sure
-    your Remarkable tablet is on Wi-Fi.
+  <div class="gradients">
+    <div class="gradient gradient-default"></div>
+    <div class="gradient gradient-success"></div>
   </div>
 
-  <form id="setupForm" method='post'>
-    <label for="code">One-time code</label>
-    <input id="code" type="text" placeholder="8-character code (e.g. remarkbl)" />
-    <button type="submit">Log in to Remarkable</button>
-  </form>
+  <div class="wrapper">
+    <div class="container">
+      <div class="content">
+        <h1>Link your reMarkable</h1>
+
+        <p>
+          Welcome to Remarklater, the best way to send any website to your
+          Remarkable tablet. To get started, link Chrome to your tablet with
+          a one-time code from Remarkable.
+        </p>
+
+        <p>
+          Once you've linked your account, you'll be able to
+          <code>&#8984;P</code> any page directly to your tablet.
+        </p>
+      </div>
+
+      <div class="content goto">
+        <a class="button" href="https://my.remarkable.com/generator-device" target="_blank">Copy one-time code from Remarkable</a>
+      </div>
+
+      <div class="content sign-in hide">
+        <p id="error"></p>
+        <form method='post'>
+          <input name="code" type="text" placeholder="one-time code" maxlength="8" spellcheck="false" />
+          <button type="submit" class="button" disabled="disabled">Link tablet</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content success">
+        <h1>Congrats, you're all set up!</h1>
+
+        <p>
+          Now let's give Remarklater a whirl by sending this page to your Remarkable
+          tablet. Press <code>&#8984;P</code> or go to the <code>File</code> menu and click
+          <code>Print&hellip;</code>. In the printer dialog, select <code>Send
+          to Remarkable</code> as your destination.
+        </p>
+
+        <p>
+          Once the file has printed, you should see it appear on your
+          Remarkable tablet within a few moments. If you don't see the file
+          show up, make sure your tablet is
+          <a href="https://support.remarkable.com/hc/en-us/articles/115005335609" target="_blank">connected to WiFi</a>.
+          If you're sure your tablet is connected and are still running into
+          issues, <a href="mailto:michael@690labs.com">drop a line to
+          michael@690labs.com</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Created by <a href="https://twitter.com/sch" target="_blank">Michael Schade</a> and <a href="https://690labs.com/" target="_blank">690 Labs</a>.</p>
+    <p>This project is not affiliated with <a href="https://remarkable.com/" target="_blank">reMarkable</a>, who make this lovely tablet.</p>
+  </div>
 </body>
 </html>

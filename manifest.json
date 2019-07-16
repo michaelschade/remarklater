@@ -22,8 +22,7 @@
     "persistent": false
   },
   "web_accessible_resources": [
-    "vendor/jquery.min.js",
-    "vendor/jquery.min.js",
-    "static/setup.js"
+    "static/*",
+    "vendor/*"
   ]
 }
