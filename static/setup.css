@@ -238,23 +238,27 @@ body {
   text-decoration: underline;
 }
 
-p#error {
+p#status {
   font-weight: 400;
   font-size: 1em;
   padding: 0px 30px 0px 30px;
-  background-image: linear-gradient(127deg, rgba(255, 89, 89, 0.94), rgb(255, 106, 106));
+  background-image: linear-gradient(127deg, rgba(119, 119, 119, 0.94), rgb(132, 132, 132));
   -webkit-background-clip: text;
   color: transparent;
-  text-transform: lowercase;
   height: 0;
   transform: translateY(-11px);
-  padding-bottom: 15px;
+  padding-bottom: 18px;
   margin-top: -5px;
   margin-bottom: 0px;
 }
 
-p#error::first-letter {
+p#status.error::first-letter {
   text-transform: uppercase;
+}
+
+p#status.error {
+  background-image: linear-gradient(127deg, rgba(255, 89, 89, 0.94), rgb(255, 106, 106));
+  text-transform: lowercase;
 }
 
 .footer {
@@ -266,7 +270,7 @@ p#error::first-letter {
   color: rgba(69, 65, 76, 0.82);
   z-index: 0;
   text-align: center;
-  line-height: 0.6em
+  line-height: 1.3em;
 }
 
 .footer a, .footer a:visited {

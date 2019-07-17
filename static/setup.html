@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Setup Remarklater</title>
+  <title>Set up Send to reMarkable</title>
   <link rel="stylesheet" type="text/css" href="/static/setup.css" />
   <script type="text/javascript" src="/vendor/chrome-extension-async.js"></script>
   <script type="text/javascript" src="/vendor/jszip.min.js"></script>
@@ -21,9 +21,9 @@
         <h1>Link your reMarkable</h1>
 
         <p>
-          Welcome to Remarklater, the best way to send any website to your
-          Remarkable tablet. To get started, link Chrome to your tablet with
-          a one-time code from Remarkable.
+          Welcome to Send to reMarkable, the best way to send any page to
+          your reMarkable tablet. To get started, link Chrome to your tablet
+          with a one-time code from reMarkable.
         </p>
 
         <p>
@@ -33,11 +33,11 @@
       </div>
 
       <div class="content goto">
-        <a class="button" href="https://my.remarkable.com/generator-device" target="_blank">Copy one-time code from Remarkable</a>
+        <a class="button" href="https://my.remarkable.com/generator-device" target="_blank">Copy one-time code from reMarkable</a>
       </div>
 
       <div class="content sign-in hide">
-        <p id="error"></p>
+        <p id="status"></p>
         <form method='post'>
           <input name="code" type="text" placeholder="one-time code" maxlength="8" spellcheck="false" />
           <button type="submit" class="button" disabled="disabled">Link tablet</button>
@@ -50,27 +50,26 @@
         <h1>Congrats, you're all set up!</h1>
 
         <p>
-          Now let's give Remarklater a whirl by sending this page to your Remarkable
+          Now let's give Send to reMarkable a whirl by sending this page to your reMarkable
           tablet. Press <code>&#8984;P</code> or go to the <code>File</code> menu and click
           <code>Print&hellip;</code>. In the printer dialog, select <code>Send
-          to Remarkable</code> as your destination.
+          to reMarkable</code> as your destination.
         </p>
 
         <p>
           Once the file has printed, you should see it appear on your
-          Remarkable tablet within a few moments. If you don't see the file
+          reMarkable tablet within a few moments. If you don't see the file
           show up, make sure your tablet is
           <a href="https://support.remarkable.com/hc/en-us/articles/115005335609" target="_blank">connected to WiFi</a>.
           If you're sure your tablet is connected and are still running into
-          issues, <a href="mailto:michael@690labs.com">drop a line to
-          michael@690labs.com</a>.
+          issues, <a href="mailto:m@mschade.me">drop a line to m@mschade.me</a>.
         </p>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    <p>Created by <a href="https://twitter.com/sch" target="_blank">Michael Schade</a> and <a href="https://690labs.com/" target="_blank">690 Labs</a>.</p>
+    <p>Created by <a href="https://twitter.com/sch" target="_blank">Michael Schade</a></p>
     <p>This project is not affiliated with <a href="https://remarkable.com/" target="_blank">reMarkable</a>, who make this lovely tablet.</p>
   </div>
 </body>

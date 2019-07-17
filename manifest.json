@@ -1,7 +1,7 @@
 {
-  "name": "Remark Later",
+  "name": "Send to reMarkable",
   "version": "0.1",
-  "description": "Send documents to your Remarkable tablet",
+  "description": "The best way to send content to your reMarkable tablet. Print any website and pick it up immediately on your tablet.",
   "manifest_version": 2,
   "permissions": [
     "storage",
