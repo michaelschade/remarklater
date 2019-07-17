@@ -1,11 +1,13 @@
 <html>
 <head>
   <title>Set up Send to reMarkable</title>
+  <link rel="shortcut icon" href="/static/favicon.ico" />
   <link rel="stylesheet" type="text/css" href="/static/setup.css" />
   <script type="text/javascript" src="/vendor/chrome-extension-async.js"></script>
   <script type="text/javascript" src="/vendor/jszip.min.js"></script>
   <script type="text/javascript" src="/vendor/jquery.min.js"></script>
   <script type="text/javascript" src="/static/setup.js"></script>
+  <script type="text/javascript" src="/static/analytics.js"></script>
   <script type="text/javascript" src="/utils.js"></script>
   <script type="text/javascript" src="/remarkable.js"></script>
 </head>
@@ -33,7 +35,7 @@
       </div>
 
       <div class="content goto">
-        <a class="button" href="https://my.remarkable.com/generator-device" target="_blank">Copy one-time code from reMarkable</a>
+        <a id="generate-code" class="button" href="https://my.remarkable.com/generator-device" target="_blank">Copy one-time code from reMarkable</a>
       </div>
 
       <div class="content sign-in hide">
@@ -69,8 +71,8 @@
   </div>
 
   <div class="footer">
-    <p>Created by <a href="https://twitter.com/sch" target="_blank">Michael Schade</a></p>
-    <p>This project is not affiliated with <a href="https://remarkable.com/" target="_blank">reMarkable</a>, who make this lovely tablet.</p>
+    <p>Created by <a href="https://twitter.com/sch" target="_blank">Michael Schade</a>.</p>
+    <p>This project is not affiliated with <a href="https://remarkable.com/" target="_blank">reMarkable</a>.</p>
   </div>
 </body>
 </html>

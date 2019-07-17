@@ -41,6 +41,7 @@ chrome.printerProvider.onPrintRequested.addListener(async (printJob, callback) =
   if (!(await Remarkable.isDeviceRegistered())) {
     callback('FAILED');
     chrome.tabs.create({url:"static/setup.html?print=failed"});
+    trackEvent('print', 'failed_unregistered');
     return;
   }
   callback('OK');
@@ -49,8 +50,10 @@ chrome.printerProvider.onPrintRequested.addListener(async (printJob, callback) =
     let zipBlob = await Remarkable.packageAsZip(uploadReq.ID, printJob.document)
     let docUploadReq = await Remarkable.uploadDocument(uploadReq.BlobURLPut, zipBlob);
     let uploadStatusReq = await Remarkable.updateDocument(uploadReq.ID, printJob.title);
+    trackEvent('print', 'success');
   } catch (err) {
     console.error(`Encountered error printing`, printJob, err);
+    trackEvent('print', 'failed', err);
   }
 });
 })()
