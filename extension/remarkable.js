@@ -48,7 +48,7 @@ Remarkable.registerDevice = async function(code) {
 // Should probably cache this, but let's just refresh it every use for now
 async function bearerToken() {
   if (!(await Remarkable.isDeviceRegistered())) {
-    throw new Error("Must register device first. Call `Remarkable.registerDevice` with a one-time code from https://my.remarkable.com/generator-device to get started.");
+    throw new Error("Must register device first. Call `Remarkable.registerDevice` with a one-time code from https://my.remarkable.com/connect/remarkable to get started.");
   }
   let request = await fetch(Config.urls.refreshToken, {
     method: 'POST',
