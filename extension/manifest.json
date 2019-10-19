@@ -1,6 +1,6 @@
 {
   "name": "Send to reMarkable",
-  "version": "0.1",
+  "version": "1.0",
   "description": "The best way to send content to your reMarkable tablet. Print any website and pick it up immediately on your tablet.",
   "manifest_version": 2,
   "icons": {
